@@ -56,10 +56,19 @@ def compute_prefix(word):
     k = 0
 
     for q in range(1, word_length):
+        if word[k]==word[q]:
+            k=k+1
+            prefix[q]=k
+        else:
+            if(k!=0):
+                k = prefix[k - 1]
+            else:
+                prefix[q]=0
+        '''
         while k > 0 and word[k] != word[q]:
             k = prefix[k - 1]
-
         if word[k + 1] == word[q]:
             k = k + 1
         prefix[q] = k
+        '''
     return prefix
